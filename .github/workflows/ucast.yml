@@ -95,3 +95,31 @@ jobs:
           git add .
           git commit -m "$MSG"
           git push
+
+  # Publish plots to GitHub pages
+  publish:
+    needs: plot
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout database
+        uses: actions/checkout@v2
+
+      - name: Create a clean orphan branch
+        run: |
+          git checkout --orphan pages
+          rm -rf .github *
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: plots
+
+      - name: Add forecast tables to database
+        run: |
+          git config user.name  'µcast bot'
+          git config user.email 'bot@µcast'
+          git add .
+          git commit -m "Latest plots"
+          git push --force --set-upstream origin pages
