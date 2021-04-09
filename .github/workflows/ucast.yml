@@ -10,3 +10,32 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+jobs:
+
+  # Create new forecast tables and stage them as artifacts
+  mktab:
+    runs-on: ubuntu-latest
+    container: astcon/ucast:latest
+    strategy:
+      matrix:
+        site: ['ALMA', 'APEX', 'GLT', 'JCMT', 'KP', 'LMT', 'PDB', 'PV', 'SMA', 'SMT', 'SPT']
+
+    steps:
+      - name: Checkout database
+        uses: actions/checkout@v2
+
+      - name: Make new forecast table
+        run: |
+          . /usr/local/am/bin/am.sh
+          ucast mktab ${{ matrix.site }} --no-link
+
+      - name: Remove old tables
+        run: |
+          rm -f $(ls ${{ matrix.site }} | head -n -9)
+
+      - name: Upload tables as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.site }}
+          path: ${{ matrix.site }}
