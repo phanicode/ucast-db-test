@@ -98,7 +98,7 @@ jobs:
 
   # Publish plots to GitHub pages
   publish:
-    needs: plot
+    needs: [plot, store]
 
     runs-on: ubuntu-latest
 
@@ -118,8 +118,9 @@ jobs:
 
       - name: Add forecast tables to database
         run: |
+          MSG="$(git log --pretty='%s' main | grep '^Forecasted from' | head -n1)"
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
           git add .
-          git commit -m "Latest plots"
+          git commit -m "$MSG"
           git push --force --set-upstream origin pages
