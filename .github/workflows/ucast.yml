@@ -69,3 +69,29 @@ jobs:
             *.png
             *.pdf
             *.html
+
+  # Store forecast tables
+  store:
+    needs: mktab
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout database
+        uses: actions/checkout@v2
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+
+      - name: Cleanup images, just in case `plot` finished
+        run: |
+          rm -fr plots/
+
+      - name: Add forecast tables to database
+        run: |
+          MSG="Forecasted from $(ls KP | tail -n1 | sed 's/\.tsv//g;s/_/ /g;s/\./:/g')"
+          git config user.name  'µcast bot'
+          git config user.email 'bot@µcast'
+          git add .
+          git commit -m "$MSG"
+          git push
