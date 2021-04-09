@@ -1,0 +1,12 @@
+# This is a workflow to pull weather data from NOMADS and process them with am using µcast
+
+name: µcast
+
+# Controls when the action will run.
+on:
+  # Schedule the workflow
+  schedule:
+    - cron: '15 5/6 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
