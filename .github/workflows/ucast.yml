@@ -58,8 +58,8 @@ jobs:
             ucast link  ${d%/}
             ucast psite ${d%/} --out ./${d%/}
           done
-          ucast pall
-          ucast vis
+          ucast pall --out index
+          ucast vis  --out index
 
       - name: Upload plots as artifacts
         uses: actions/upload-artifact@v2
