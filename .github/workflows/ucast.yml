@@ -93,7 +93,7 @@ jobs:
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
           git add .
-          git commit -m "$MSG"
+          git commit -m "$MSG" || true
           git push
 
   # Publish plots to GitHub pages
