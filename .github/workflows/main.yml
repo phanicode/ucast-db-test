@@ -1,11 +1,9 @@
 name: 'Monthly Merge test'
 
 on:
-  schedule:
-  # I am using the monthly cron job to run the nightly merge github action
-  # in order to reduce custom code.
-  # This will ensure that this action runs only once
-    - cron:  '0 0 1 * *'
+  push:
+    branches:
+      - master
 
 jobs:
   nightly-merge:
