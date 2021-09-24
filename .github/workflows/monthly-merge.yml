@@ -37,7 +37,8 @@ jobs:
           git config user.email 'phaniv@email.arizona.edu'
           Y=$(date -d "12 hours ago" '+%Y')
           m=$(date -d "12 hours ago" '+%m')
-          echo $Y $m
+          d=$(date -d "12 hours ago" '+%d')
+          echo $Y $m $d
           
 #           ls
 #           echo $Y-1
