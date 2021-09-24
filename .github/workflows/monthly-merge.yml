@@ -18,21 +18,19 @@ jobs:
         stable_branch: 'devel'
         development_branch: 'master'
         allow_ff: false
+        
     
       env:
         GITHUB_TOKEN: "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"
     - run: |
           Y=$(date +%Y)
           m=$(date +%m)
+          ls
           git rm "ALMA/{Y}-{m}"*
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
           git add .
-          
-    - name: Remove File
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: ALMA
+    
         
 
 
