@@ -11,3 +11,19 @@ jobs:
       - run: find . -name "ALMA/{y}-{m}*" #-delete
 
   
+# jobs:
+
+  # Create new forecast tables and stage them as artifacts
+  testing:
+    runs-on: ubuntu-latest
+    container: astcon/ucast:latest
+    strategy:
+      matrix:
+        site: ['ALMA', 'APEX', 'GLT', 'JCMT', 'KP', 'LMT', 'PDB', 'PV', 'SMA', 'SMT', 'SPT']
+    steps: 
+      - run: |
+          MSG="$(git log --pretty='%s' main | grep '^Forecasted from' | head -n1)"
+          git config user.name  'µcast bot'
+          git config user.email 'bot@µcast'
+          git add .
+        
