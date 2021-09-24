@@ -30,9 +30,12 @@ jobs:
           echo m
           echo ALMA/$Y-$m
           git rm ALMA/$Y-$m*
+          
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
           git add .
+          git commit -m  "removed last month"
+          
     
         
 
