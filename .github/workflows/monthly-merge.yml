@@ -1,6 +1,5 @@
 name: 'Monthly Merge'
 on: [push]
-
 #   schedule:
 #     - cron:  '0 0 1 * *'
   
@@ -16,17 +15,17 @@ jobs:
         ref: archive
         token: ${{ secrets.ACTION_TOKEN }}
       
-    - name: Monthly merge
-      uses: robotology/gh-action-nightly-merge@v1.3.2
+#     - name: Monthly merge
+#       uses: robotology/gh-action-nightly-merge@v1.3.2
 
-      with:
-        stable_branch: 'archive'
-        development_branch: 'master'
-        allow_ff: false
+#       with:
+#         stable_branch: 'archive'
+#         development_branch: 'master'
+#         allow_ff: false
         
     
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
     - name: Checkout 2
       uses: actions/checkout@v2
       with:
@@ -36,27 +35,29 @@ jobs:
     
           git config user.name  'phanicode'
           git config user.email 'phaniv@email.arizona.edu'
-          Y=$(date +%Y)
-          m=$(date +%m)
-          ls
-          echo $Y-1
-          echo m
-          echo ALMA/$Y-$m
-          git checkout main
-          git rm ALMA/$Y-$m*
-          git rm APEX/$Y-$m*
-          git rm GLT/$Y-$m*
-          git rm JCMT/$Y-$m*
-          git rm KP/$Y-$m*
-          git rm LMT/$Y-$m*
-          git rm PDB/$Y-$m*
-          git rm PV/$Y-$m*
-          git rm SMA/$Y-$m*
-          git rm SMT/$Y-$m*
-          git rm SPT/$Y-$m*
-          git add .
+          Y=$(date -d "12 hours ago" '+%Y')
+          m=$(date -d "12 hours ago" '+%m')
+          echo $Y $m
           
-          git commit -m  "removed last month"
-          git push --force --set-upstream origin
+#           ls
+#           echo $Y-1
+#           echo m
+#           echo ALMA/$Y-$m
+#           git checkout main
+#           git rm ALMA/$Y-$m*
+#           git rm APEX/$Y-$m*
+#           git rm GLT/$Y-$m*
+#           git rm JCMT/$Y-$m*
+#           git rm KP/$Y-$m*
+#           git rm LMT/$Y-$m*
+#           git rm PDB/$Y-$m*
+#           git rm PV/$Y-$m*
+#           git rm SMA/$Y-$m*
+#           git rm SMT/$Y-$m*
+#           git rm SPT/$Y-$m*
+#           git add .
+          
+#           git commit -m  "removed last month"
+#           git push --force --set-upstream origin
           
           
