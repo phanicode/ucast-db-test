@@ -29,9 +29,6 @@ jobs:
           echo Y
           echo m
           echo ALMA/$Y-$m
-          git remote set-url origin "https://github.com/phanicode/ucast-db-test.git"
-          git config user.name  'phanicode'
-          git config user.email 'phaniv@email.arizona.edu'
           git checkout main
           git rm ALMA/$Y-$m*
           git add .
