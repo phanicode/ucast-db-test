@@ -16,9 +16,6 @@ jobs:
   # Create new forecast tables and stage them as artifacts
   testing:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        site: ['ALMA', 'APEX', 'GLT', 'JCMT', 'KP', 'LMT', 'PDB', 'PV', 'SMA', 'SMT', 'SPT']
     steps: 
       - run: |
           MSG="$(git log --pretty='%s' main | grep '^Forecasted from' | head -n1)"
