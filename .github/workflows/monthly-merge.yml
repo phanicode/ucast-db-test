@@ -22,7 +22,9 @@ jobs:
       env:
         GITHUB_TOKEN: "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"
     - run: |
-          git rm ALMA
+          y=$(date +%Y)
+          m=$(date +%m)
+          git rm ALMA/{$Y}-{$m}*
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
           git add .
