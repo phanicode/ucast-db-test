@@ -7,6 +7,7 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: y=$(date +%Y)
       - run: m=$(date +%m)
+      - run: ls -al
       - run: git rm "ALMA/{y}-{m}*"
 
   
