@@ -26,7 +26,10 @@ jobs:
           Y=$(date +%Y)
           m=$(date +%m)
           ls
-          git rm "ALMA/{Y}-{m}"*
+          echo Y
+          echo m
+          echo ALMA/{Y}-{m}
+          git rm ALMA/{Y}-{m}*
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
           git add .
