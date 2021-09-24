@@ -29,14 +29,14 @@ jobs:
           echo Y
           echo m
           echo ALMA/$Y-$m
-          git checkout main
-          git rm ALMA/$Y-$m*
-          
           git config user.name  'µcast bot'
           git config user.email 'bot@µcast'
+          git checkout main
+          git rm ALMA/$Y-$m*
           git add .
           git commit -m  "removed last month"
-          git push origin
+          git push --force --set-upstream origin
+          
           
     
         
