@@ -5,23 +5,23 @@ on: [push]
 #     - cron:  '0 0 1 * *'
   
 jobs:
-  nightly-merge:
+   nightly-merge:
 
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Monthly merge
-      uses: robotology/gh-action-nightly-merge@v1.3.2
-      with:
-        stable_branch: 'devel'
-        development_branch: 'master'
-        allow_ff: false
+#     - name: Checkout
+#       uses: actions/checkout@v1
+#     - name: Monthly merge
+#       uses: robotology/gh-action-nightly-merge@v1.3.2
+#       with:
+#         stable_branch: 'devel'
+#         development_branch: 'master'
+#         allow_ff: false
         
     
-      env:
-        GITHUB_TOKEN: "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"
+#       env:
+#         GITHUB_TOKEN: "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"
     - run: |
           Y=$(date +%Y)
           m=$(date +%m)
@@ -29,7 +29,7 @@ jobs:
           echo Y
           echo m
           echo ALMA/$Y-$m
-          git remote set-url origin "https://phanicode/ucast-db-test.git"
+          git remote set-url origin "https://github.com/phanicode/ucast-db-test.git"
           git config user.name  'phanicode'
           git config user.email 'phaniv@email.arizona.edu'
           git checkout main
