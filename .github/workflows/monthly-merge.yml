@@ -26,33 +26,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       
-        run: |
-
-            git config user.name  ''
-            git config user.email 'bot@µcast'
-            Y=$(date +%Y)
-            m=$(date +%m)
-            ls
-            echo Y
-            echo m
-            echo ALMA/$Y-$m
-            git checkout main
-            git rm ALMA/$Y-$m*
-            git rm APEX/$Y-$m*
-            git rm GLT/$Y-$m*
-            git rm JCMT/$Y-$m*
-            git rm KP/$Y-$m*
-            git rm LMT/$Y-$m*
-            git rm PDB/$Y-$m*
-            git rm PV/$Y-$m*
-            git rm SMA/$Y-$m*
-            git rm SMT/$Y-$m*
-            git rm SPT/$Y-$m*
-            git add .
-
-            git commit -m  "removed last month"
-            git push --force --set-upstream origin
-
-
+  
 
 
