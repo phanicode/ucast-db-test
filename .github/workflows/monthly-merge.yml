@@ -18,12 +18,19 @@ jobs:
         stable_branch: 'devel'
         development_branch: 'master'
         allow_ff: false
+    
       env:
         GITHUB_TOKEN: "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"
+    - run: |
+          MSG="$(git log --pretty='%s' main | grep '^Forecasted from' | head -n1)"
+          git config user.name  'µcast bot'
+          git config user.email 'bot@µcast'
+          git add .
     - name: Remove File
       uses: JesseTG/rm@v1.0.2
       with:
         path: ALMA
+        
 
 
     
