@@ -1,5 +1,5 @@
 name: 'Monthly Merge'
-on: [push]
+on : [push]
 #   schedule:
 #     - cron:  '0 0 1 * *'
   
@@ -15,17 +15,17 @@ jobs:
         ref: archive
         token: ${{ secrets.ACTION_TOKEN }}
       
-#     - name: Monthly merge
-#       uses: robotology/gh-action-nightly-merge@v1.3.2
+    - name: Monthly merge
+      uses: robotology/gh-action-nightly-merge@v1.3.2
 
-#       with:
-#         stable_branch: 'archive'
-#         development_branch: 'master'
-#         allow_ff: false
+      with:
+        stable_branch: 'archive'
+        development_branch: 'master'
+        allow_ff: false
         
     
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
     - name: Checkout 2
       uses: actions/checkout@v2
       with:
@@ -39,26 +39,20 @@ jobs:
           m=$(date -d "12 hours ago" '+%m')
           d=$(date -d "12 hours ago" '+%d')
           echo $Y $m $d
+          echo ALMA/$Y-$m
+          git checkout main
+          git rm --ignore-unmatch ALMA/$Y-$m* 
+          git rm --ignore-unmatch APEX/$Y-$m*
+          git rm --ignore-unmatch GLT/$Y-$m*
+          git rm --ignore-unmatch JCMT/$Y-$m*
+          git rm --ignore-unmatch KP/$Y-$m*
+          git rm --ignore-unmatch LMT/$Y-$m*
+          git rm --ignore-unmatch PDB/$Y-$m*
+          git rm --ignore-unmatch PV/$Y-$m*
+          git rm --ignore-unmatch SMA/$Y-$m*
+          git rm --ignore-unmatch SMT/$Y-$m*
+          git rm --ignore-unmatch SPT/$Y-$m*
+          git add .
           
-#           ls
-#           echo $Y-1
-#           echo m
-#           echo ALMA/$Y-$m
-#           git checkout main
-#           git rm ALMA/$Y-$m*
-#           git rm APEX/$Y-$m*
-#           git rm GLT/$Y-$m*
-#           git rm JCMT/$Y-$m*
-#           git rm KP/$Y-$m*
-#           git rm LMT/$Y-$m*
-#           git rm PDB/$Y-$m*
-#           git rm PV/$Y-$m*
-#           git rm SMA/$Y-$m*
-#           git rm SMT/$Y-$m*
-#           git rm SPT/$Y-$m*
-#           git add .
-          
-#           git commit -m  "removed last month"
-#           git push --force --set-upstream origin
-          
-          
+          git commit -m  "removed last month"
+          git push --force --set-upstream origin
