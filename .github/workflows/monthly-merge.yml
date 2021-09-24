@@ -29,7 +29,7 @@ jobs:
           echo Y
           echo m
           echo ALMA/$Y-$m
-          git checkout origin
+          git checkout main
           git rm ALMA/$Y-$m*
           
           git config user.name  'µcast bot'
