@@ -8,6 +8,6 @@ jobs:
       - run: y=$(date +%Y)
       - run: m=$(date +%m)
       - run: ls -al
-      - run: git rm "ALMA/{y}-{m}*"
+      - run: find . -name "ALMA/{y}-{m}*" #-delete
 
   
