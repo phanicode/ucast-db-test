@@ -24,7 +24,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.token }}
     - run: |
     
-          git config user.name  'µcast bot'
+          git config user.name  'µcast_bot'
           git config user.email 'bot@µcast'
           Y=$(date +%Y)
           m=$(date +%m)
