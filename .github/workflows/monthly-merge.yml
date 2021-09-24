@@ -1,7 +1,9 @@
 name: 'Monthly Merge'
-on:
-  schedule:
-    - cron:  '0 0 1 * *'
+on: [push]
+
+#   schedule:
+#     - cron:  '0 0 1 * *'
+  
 jobs:
   nightly-merge:
 
