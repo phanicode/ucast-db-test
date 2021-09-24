@@ -15,14 +15,17 @@ jobs:
     - name: Monthly merge
       uses: robotology/gh-action-nightly-merge@v1.3.2
       with:
-        stable_branch: 'devel'
+        stable_branch: 'archive'
         development_branch: 'master'
         allow_ff: false
         
     
       env:
-        GITHUB_TOKEN: "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"
+        GITHUB_TOKEN: ${{ secrets.token }}
     - run: |
+    
+          git config user.name  'µcast bot'
+          git config user.email 'bot@µcast'
           Y=$(date +%Y)
           m=$(date +%m)
           ls
@@ -31,14 +34,20 @@ jobs:
           echo ALMA/$Y-$m
           git checkout main
           git rm ALMA/$Y-$m*
+          git rm APEX/$Y-$m*
+          git rm GLT/$Y-$m*
+          git rm JCMT/$Y-$m*
+          git rm KP/$Y-$m*
+          git rm LMT/$Y-$m*
+          git rm PDB/$Y-$m*
+          git rm PV/$Y-$m*
+          git rm SMA/$Y-$m*
+          git rm SMT/$Y-$m*
+          git rm SPT/$Y-$m*
           git add .
-          git commit -m  "removed last month"
           
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: "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"
-        branch: "main"
+          git commit -m  "removed last month"
+          git push --force --set-upstream origin
           
           
 
