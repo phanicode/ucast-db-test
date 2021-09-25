@@ -19,8 +19,8 @@ jobs:
       uses: robotology/gh-action-nightly-merge@v1.3.2
 
       with:
-        stable_branch: 'archive'
-        development_branch: 'main'
+        stable_branch: 'main'
+        development_branch: 'archive'
         allow_forks: true
         allow_ff: true
       env:
