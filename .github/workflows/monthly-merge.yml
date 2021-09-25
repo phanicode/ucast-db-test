@@ -36,7 +36,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: main
-        token: ${{ secrets.PHANICODE_AUTH }}
+        token: ${{ secrets.TOKEN }}
     - run: |
           git pull origin main --allow-unrelated-histories
           git checkout archive
@@ -66,5 +66,5 @@ jobs:
           git push --force --set-upstream origin
           
       env:
-        GITHUB_TOKEN: ${{ secrets.PHANICODE_AUTH }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
        
