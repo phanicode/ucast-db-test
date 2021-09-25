@@ -20,10 +20,8 @@ jobs:
 
       with:
         stable_branch: 'archive'
-        development_branch: 'master'
-        allow_ff: false
-        
-    
+        development_branch: 'main'
+        allow_ff: true
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
     - name: Checkout 2
@@ -54,5 +52,5 @@ jobs:
           git rm --ignore-unmatch SPT/$Y-$m*
           git add .
           
-          git commit -m  "removed last month"
+          git commit -m --allow-empty "removed last month" 
           git push --force --set-upstream origin
