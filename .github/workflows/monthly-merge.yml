@@ -38,11 +38,14 @@ jobs:
         ref: main
         token: ${{ secrets.ACTION_TOKEN }}
     - run: |
-          git pull origin --allow-unrelated-histories
-          git checkout archive
-          git merge main -m "merging main"
+          cd ..
+          cd ..
           git config user.name  'phanicode'
           git config user.email 'phaniv@email.arizona.edu'
+          git clone https://github.com/phanicode/ucast-db-test.git
+          cd ucast-db-test
+          git checkout archive
+          git merge main -m "merging main"
           Y=$(date -d "12 hours ago" '+%Y')
           m=$(date -d "12 hours ago" '+%m')
           d=$(date -d "12 hours ago" '+%d')
