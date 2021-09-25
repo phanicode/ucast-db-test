@@ -38,7 +38,8 @@ jobs:
         ref: main
         token: ${{ secrets.ACTION_TOKEN }}
     - run: |
-          git checkout origin archive
+          git pull
+          git checkout archive
           git merge main -m "merging main"
           git config user.name  'phanicode'
           git config user.email 'phaniv@email.arizona.edu'
