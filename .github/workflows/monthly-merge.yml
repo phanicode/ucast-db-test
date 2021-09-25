@@ -38,12 +38,14 @@ jobs:
         ref: main
         token: ${{ secrets.ACTION_TOKEN }}
     - run: |
-          git config user.name  'phanicode'
-          git config user.email 'phaniv@email.arizona.edu'
+          git config --global user.name  'phanicode'
+          git config --global user.email 'phaniv@email.arizona.edu'
           git clone https://github.com/phanicode/ucast-db-test.git
           cd ucast-db-test
           git checkout archive
           git merge main -m "merging main"
+          git config --global user.name  'phanicode'
+          git config --global user.email 'phaniv@email.arizona.edu'
           Y=$(date -d "12 hours ago" '+%Y')
           m=$(date -d "12 hours ago" '+%m')
           d=$(date -d "12 hours ago" '+%d')
