@@ -38,7 +38,8 @@ jobs:
         ref: main
         token: ${{ secrets.ACTION_TOKEN }}
     - run: |
-          git pull origin  --allow-unrelated-histories
+          git clone https://github.com/phanicode/ucast-db-test.git
+          cd ucast-db-test
           git checkout archive
           git merge main -m "merging main"
           git config user.name  'phanicode'
