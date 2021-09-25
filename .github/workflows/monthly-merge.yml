@@ -22,9 +22,10 @@ jobs:
 #         allow_ff: true
     
     - run: |
+         
+         git clone https://github.com/phanicode/ucast-db-test.git
          git config user.name 'phanicode'
          git config user.email 'phaniv@email.arizona.edu'
-         git clone https://github.com/phanicode/ucast-db-test.git
          cd ucast-db-test
          git pull origin
          git checkout archive
