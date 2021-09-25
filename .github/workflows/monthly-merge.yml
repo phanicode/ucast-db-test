@@ -65,7 +65,7 @@ jobs:
           git rm --ignore-unmatch SPT/$Y-$m*
           git add .
           
-          git commit -m --allow-empty "removed last month" 
+          git commit --allow-empty -m "removed last month" 
           git push --force --set-upstream origin
           
       env:
