@@ -38,8 +38,6 @@ jobs:
         ref: main
         token: ${{ secrets.ACTION_TOKEN }}
     - run: |
-          git config user.name 'phanicode'
-          git config user.email 'phaniv@email.arizona.edu'
           git clone https://github.com/phanicode/ucast-db-test.git
           cd ucast-db-test
           git checkout archive
@@ -67,3 +65,5 @@ jobs:
           git push --force --set-upstream origin
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+        GIT_AUTHOR_EMAIL: "phaniv@email.arizona.edu"
+        GIT_AUTHOR_NAME: "phanicode"
