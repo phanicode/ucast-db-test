@@ -44,6 +44,7 @@ jobs:
           cd ucast-db-test
           git checkout archive
           git merge main -m "merging main"
+          
           Y=$(date -d "12 hours ago" '+%Y')
           m=$(date -d "12 hours ago" '+%m')
           d=$(date -d "12 hours ago" '+%d')
@@ -64,7 +65,5 @@ jobs:
           git add .
           git commit --allow-empty -m "removed last month" 
           git push --force --set-upstream origin
-          
-          
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
