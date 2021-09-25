@@ -40,7 +40,6 @@ jobs:
     - run: |
           cd ..
           rm -rf ucast-db-test
-          cd ..
           git config user.name  'phanicode'
           git config user.email 'phaniv@email.arizona.edu'
           git clone https://github.com/phanicode/ucast-db-test.git
