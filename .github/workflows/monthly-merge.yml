@@ -1,7 +1,15 @@
 name: 'Monthly Merge'
-on:
-  schedule:
-    - cron:  '0 0 1 * *'
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'  
+#   schedule:
+#     - cron:  '0 0 1 * *'
   
 jobs:
    nightly-merge:
@@ -9,29 +17,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        ref: archive
-        token: ${{ secrets.ACTION_TOKEN }}
+#     - name: Checkout
+#       uses: actions/checkout@v2
+#       with:
+#         ref: archive
+#         token: ${{ secrets.ACTION_TOKEN }}
       
-    - name: Monthly merge
-      uses: robotology/gh-action-nightly-merge@v1.3.2
+#     - name: Monthly merge
+#       uses: robotology/gh-action-nightly-merge@v1.3.2
 
-      with:
-        stable_branch: 'main'
-        development_branch: 'archive'
-        allow_forks: true
-        allow_ff: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+#       with:
+#         stable_branch: 'main'
+#         development_branch: 'archive'
+#         allow_forks: true
+#         allow_ff: true
+      
     - name: Checkout 2
       uses: actions/checkout@v2
       with:
         ref: main
         token: ${{ secrets.ACTION_TOKEN }}
     - run: |
-    
+          git checkout origin archive
+          git merge main -m "merging main"
           git config user.name  'phanicode'
           git config user.email 'phaniv@email.arizona.edu'
           Y=$(date -d "12 hours ago" '+%Y')
@@ -55,3 +63,6 @@ jobs:
           
           git commit -m --allow-empty "removed last month" 
           git push --force --set-upstream origin
+          
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
