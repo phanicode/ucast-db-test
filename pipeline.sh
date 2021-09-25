@@ -1,15 +1,15 @@
-git clone https://github.com/phanicode/ucast-db-test.git
-cd ucast-db-test
-git checkout archive
-git merge main -m "merging main"
+# git clone https://github.com/phanicode/ucast-db-test.git
+# cd ucast-db-test
+# git checkout archive
+# git merge main -m "merging main"
 
 Y=$(date -d "12 hours ago" '+%Y')
-m=$(date -d "27 days ago" '+%m')
+m=$(date -d "12 hours ago" '+%m')
 d=$(date -d "12 hours ago" '+%d')
 echo $Y $m $d
 echo ALMA/$Y-$m
-git add .
-git commit --allow-empty -m "merged main"
+# git add .
+# git commit --allow-empty -m "merged main"
 git checkout main
 git rm --ignore-unmatch ALMA/$Y-$m* 
 git rm --ignore-unmatch APEX/$Y-$m*
@@ -25,5 +25,5 @@ git rm --ignore-unmatch SPT/$Y-$m*
 git add .
 git commit --allow-empty -m "removed last month"  
 git push --all --force --set-upstream origin
-cd ..
-rm -rf ucast-db-tests
+# cd ..
+# rm -rf ucast-db-tests
