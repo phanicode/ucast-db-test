@@ -1,11 +1,12 @@
-#  git clone https://github.com/phanicode/ucast-db-test.git
-#  git config user.name 'phanicode'
-#  git config user.email 'phaniv@email.arizona.edu'
-#  cd ucast-db-test
-#  git pull origin
-#  git checkout archive
-#  git checkout main -- .
-#  git commit -m "copy files from main to archive"
+git clone https://github.com/phanicode/ucast-db-test.git
+git config user.name 'phanicode'
+git config user.email 'phaniv@email.arizona.edu'
+cd ucast-db-test
+git pull origin
+git checkout archive
+git checkout main -- .
+git commit -m "copy files from main to archive"
+git push --all --force --set-upstream origin
 Y=$(date -d "12 hours ago" '+%Y')
 m=$(date -d "12 hours ago" '+%m')
 d=$(date -d "12 hours ago" '+%d')
