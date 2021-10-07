@@ -1,5 +1,8 @@
 name: 'Monthly Merge'
-on: [push]
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 0 1 * *'
 jobs:
    nightly-merge:
 
@@ -22,7 +25,6 @@ jobs:
 #         allow_ff: true
     
     - run: |
-         
          git clone https://github.com/phanicode/ucast-db-test.git
          git config user.name 'phanicode'
          git config user.email 'phaniv@email.arizona.edu'
